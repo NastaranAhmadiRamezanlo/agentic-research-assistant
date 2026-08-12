@@ -1,0 +1,11 @@
+University A
+
+University A offers a Master's degree in Artificial Intelligence.
+
+The program lasts two years.
+
+Students study machine learning, deep learning, natural language processing, and computer vision.
+
+The tuition fee is 12,000 euros per year.
+
+The program is taught in English.
