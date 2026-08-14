@@ -19,14 +19,24 @@ def create_chunks(text, chunk_size=30, overlap=5):
     return chunks
 
 
-documents_path = Path("documents")
+def load_documents(documents_path):
+    documents = []
 
-files = documents_path.glob("*.txt")
+    files = documents_path.glob("*.txt")
 
-for file in files:
-    text = file.read_text()
+    for file in files:
+        text = file.read_text(encoding="utf-8")
 
-    chunks = create_chunks(text)
+        documents.append(text)
+
+    return documents
+
+
+# test
+documents = load_documents(Path("documents"))
+
+for document in documents:
+    chunks = create_chunks(document)
 
     for chunk in chunks:
         print("---- CHUNK ----")

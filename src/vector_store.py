@@ -1,39 +1,43 @@
+from pathlib import Path
+
+from main import load_documents, create_chunks
 from sentence_transformers import SentenceTransformer
 
 
+# Load documents
+documents = load_documents(Path("documents"))
+
+
+# Create chunks from the documents
+chunks = []
+
+for document in documents:
+    document_chunks = create_chunks(document)
+    chunks.extend(document_chunks)
+
+
+print("Number of chunks:", len(chunks))
+
+
+# Load embedding model
 model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
-
-
-chunks = [
-    "University A offers a Master's degree in Artificial Intelligence.",
-    "The program lasts two years.",
-    "The tuition fee is 12,000 euros per year.",
-    "The program is taught in English."
-]
 
 
 # Create embeddings for our chunks
 chunk_embeddings = model.encode(chunks)
 
-print("Number of chunks:", len(chunks))
+
 print("Embedding size:", len(chunk_embeddings[0]))
 
-question = "How much does the university cost?"
+def retrieve(question):
 
-question_embedding = model.encode([question])
+    question_embedding = model.encode([question])
 
-similarities = model.similarity(
-    question_embedding,
-    chunk_embeddings
-)
+    similarities = model.similarity(
+        question_embedding,
+        chunk_embeddings
+    )
 
-print("\nQuestion:")
-print(question)
+    best_index = similarities.argmax().item()
 
-print("\nSimilarities:")
-print(similarities)
-
-best_index = similarities.argmax().item()
-
-print("\nMost relevant chunk:")
-print(chunks[best_index])
+    return chunks[best_index]
