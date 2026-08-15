@@ -16,7 +16,15 @@ client = InferenceClient(
 def generate_answer(question, context):
 
     prompt = f"""
-Use the following context to answer the question.
+You are a research assistant.
+
+Answer the question using ONLY the information provided in the context.
+
+If the answer cannot be found in the context, say:
+"I don't have enough information to answer this question based on the provided documents."
+
+Do not use your own knowledge.
+Do not make up information.
 
 Context:
 {context}

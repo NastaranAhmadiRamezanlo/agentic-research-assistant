@@ -11,3 +11,5 @@ def ask(question):
     answer = generate_answer(question, context)
 
     return answer
+
+print(ask('how long does The program last?'))
