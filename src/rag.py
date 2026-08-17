@@ -12,4 +12,5 @@ def ask(question):
 
     return answer
 
-print(ask('how long does The program last?'))
+if __name__ == "__main__":
+    print(ask("how long does the program last?"))
