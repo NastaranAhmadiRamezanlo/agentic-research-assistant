@@ -1,0 +1,9 @@
+Renewable Energy Research Notes
+
+Solar photovoltaic efficiency depends on cell architecture, materials, temperature, and operating conditions. Research on perovskite-silicon tandem cells has investigated how combining complementary absorber materials can improve the theoretical and practical efficiency of photovoltaic systems.
+
+Battery storage can support renewable electricity by shifting energy from periods of high generation to periods of high demand. Important research topics include degradation, charging strategies, thermal management, cycle life, and system-level cost.
+
+Wind energy research considers turbine design, wake effects, forecasting, maintenance, and grid integration. Accurate forecasting and improved turbine control can help reduce uncertainty in variable renewable generation.
+
+This document is included as a small local demonstration dataset. It is not a substitute for real scholarly literature.

@@ -1,0 +1,20 @@
+[
+  {
+    "paper_id": "demo-paper-001",
+    "title": "Research Directions in Renewable Energy Systems",
+    "authors": ["Demo Author"],
+    "year": 2025,
+    "topic": "renewable energy",
+    "source": "local demonstration document",
+    "citations": ["demo-paper-002"]
+  },
+  {
+    "paper_id": "demo-paper-002",
+    "title": "Challenges in Grid-Scale Energy Storage",
+    "authors": ["Demo Author"],
+    "year": 2024,
+    "topic": "energy storage",
+    "source": "local demonstration document",
+    "citations": []
+  }
+]
