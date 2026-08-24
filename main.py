@@ -32,19 +32,31 @@ def load_documents(documents_path: Path) -> List[Dict[str, Any]]:
     return documents
 
 
-def create_chunks(document: Dict[str, Any], chunk_size: int = 120, overlap: int = 20):
+def create_chunks(
+    document: Dict[str, Any],
+    chunk_size: int = 120,
+    overlap: int = 20,
+) -> List[Dict[str, Any]]:
     """Split a document into overlapping word chunks while preserving source metadata."""
-    words = document["text"].split()
-    chunks = []
+
+    if chunk_size <= 0:
+        raise ValueError("chunk_size must be greater than zero")
+
+    if overlap < 0:
+        raise ValueError("overlap cannot be negative")
 
     if overlap >= chunk_size:
         raise ValueError("overlap must be smaller than chunk_size")
+
+    words = document["text"].split()
+    chunks = []
 
     start = 0
     chunk_id = 0
 
     while start < len(words):
         end = start + chunk_size
+
         chunks.append({
             "chunk_id": f'{document["doc_id"]}_chunk_{chunk_id}',
             "doc_id": document["doc_id"],
@@ -53,6 +65,7 @@ def create_chunks(document: Dict[str, Any], chunk_size: int = 120, overlap: int 
             "doc_type": document["doc_type"],
             "text": " ".join(words[start:end]),
         })
+
         chunk_id += 1
         start += chunk_size - overlap
 
