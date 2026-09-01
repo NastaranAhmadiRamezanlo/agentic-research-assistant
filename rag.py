@@ -9,6 +9,9 @@ def retrieve_evidence(question: str, k: int = 5):
 
 
 def ask(question: str, k: int = 5):
+    if not question.strip():
+        raise ValueError("Question cannot be empty.")
+    
     results = retrieve_evidence(question, k=k)
 
     evidence = [
